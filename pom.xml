@@ -1,0 +1,197 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>jmeter-test</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>jmeter-test</name>
+    <description>jmeter-test</description>
+    
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.0.RELEASE</version>
+        <!--<relativePath/> lookup parent from repository -->
+    </parent>
+    
+    <!--<properties>
+        <threads>10</threads>
+        <rampup>30</rampup>
+        <loops>5</loops>
+        <stage>qa.starofservice.com</stage>
+    </properties> -->
+    
+    <dependencies>
+        
+        <!-- https://mvnrepository.com/artifact/com.lazerycode.jmeter/jmeter-maven-plugin -->
+        <dependency>
+            <groupId>com.lazerycode.jmeter</groupId>
+            <artifactId>jmeter-maven-plugin</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/net.sourceforge.jtds/jtds -->
+        <dependency>
+            <groupId>net.sourceforge.jtds</groupId>
+            <artifactId>jtds</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>1.4.0.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.3.2.RELEASE</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.6.5</version>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>4.3.2.RELEASE</version>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+        <!-- <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.21.0</version>
+        </dependency> -->
+        <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.1</version>
+        </dependency>
+    </dependencies>
+    
+    <!-- <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.19.1</version>
+            </plugin>
+        </plugins>
+    </reporting> -->
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <version>2.7.0</version>
+                <executions>
+                    <execution>
+                        <id>jmeter-tests</id>
+                        <goals>
+                            <goal>jmeter</goal>
+                        </goals>
+                        <configuration>
+                            <propertiesUser>
+                                <jmeter.save.saveservice.output_format>xml</jmeter.save.saveservice.output_format>
+                                <jmeter.save.saveservice.print_field_names>true</jmeter.save.saveservice.print_field_names>
+                                <jmeter.save.saveservice.successful>true</jmeter.save.saveservice.successful>
+                                <jmeter.save.saveservice.label>true</jmeter.save.saveservice.label>
+                                <jmeter.save.saveservice.time>true</jmeter.save.saveservice.time>
+                            </propertiesUser>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    
+                    <testFilesIncluded>
+                        <!--  <jMeterTestFile>OAuth_Token_Prod_L2.jmx</jMeterTestFile> -->
+                        <jMeterTestFile>${TestFile}.jmx</jMeterTestFile>
+                    </testFilesIncluded>
+                    
+                    <propertiesUser>
+                        <threads>${threads}</threads>
+                        <rampup>${rampup}</rampup>
+                        <loops>${loops}</loops>
+                        <stage>${stage}</stage>
+                    </propertiesUser>
+                    <!-- <jmeterExtensions>
+                        <artifact>ApacheJMeter_core.jar</artifact>
+                    </jmeterExtensions>
+                    <downloadExtensionDependencies>false</downloadExtensionDependencies> -->
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.21.0</version>
+                <!-- <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-junit47</artifactId>
+                        <version>2.21.0</version>
+                    </dependency>
+                </dependencies> -->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.5.1</version>
+            </plugin>
+            <!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.19.1</version>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report-only</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin> -->
+            
+            <!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+            </plugin> -->
+        </plugins>
+    </build>
+</project>
