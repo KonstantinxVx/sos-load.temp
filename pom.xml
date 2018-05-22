@@ -77,7 +77,6 @@
             <artifactId>log4j-core</artifactId>
             <version>2.6.2</version>
         </dependency>
-        
         <!-- <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -96,14 +95,12 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>2.21.0</version>
         </dependency> -->
-        
         <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
-        <!-- <dependency>
+        <dependency>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.8.1</version>
-        </dependency> -->
-        
+        </dependency>
     </dependencies>
     
     <!-- <reporting>
@@ -159,26 +156,23 @@
                 </configuration>
             </plugin>
 
-           <!-- <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.21.0</version>
-           
-                <dependencies>
+                <!-- <dependencies>
                     <dependency>
                         <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>surefire-junit47</artifactId>
                         <version>2.21.0</version>
                     </dependency>
-                </dependencies>
-            </plugin> -->
-        
-           <!-- <plugin>
+                </dependencies> -->
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.5.1</version>
-            </plugin> -->
-           
+            </plugin>
             <!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
