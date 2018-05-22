@@ -133,6 +133,9 @@
                                 <jmeter.save.saveservice.label>true</jmeter.save.saveservice.label>
                                 <jmeter.save.saveservice.time>true</jmeter.save.saveservice.time>
                             </propertiesUser>
+                            <propertiesJMeter>
+                                <log_level.jmeter>DEBUG</log_level.jmeter>
+                            </propertiesJMeter>
                         </configuration>
                     </execution>
                 </executions>
