@@ -111,12 +111,10 @@
                 </executions>
                 <configuration>
                     <jmeterVersion>4.0</jmeterVersion>
-                    
                     <testFilesIncluded>
                         <!--  <jMeterTestFile>OAuth_Token_Prod_L2.jmx</jMeterTestFile> -->
                         <jMeterTestFile>${TestFile}.jmx</jMeterTestFile>
                     </testFilesIncluded>
-                    
                     <propertiesUser>
                         <threads>${threads}</threads>
                         <rampup>${rampup}</rampup>
@@ -125,17 +123,6 @@
                     </propertiesUser>
                 </configuration>
             </plugin>
-
-            <!-- <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.21.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.5.1</version>
-            </plugin> -->
         </plugins>
     </build>
 </project>
